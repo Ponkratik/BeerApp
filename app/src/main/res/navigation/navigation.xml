@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_beer_list">
+
+    <fragment
+        android:id="@+id/fragment_beer_list"
+        android:name="com.ponkratov.beerapp.view.BeerListFragment"
+        tools:layout="@layout/fragment_beer_list">
+        <action
+            android:id="@+id/to_beer_info"
+            app:destination="@+id/fragment_beer_info" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_beer_info"
+        android:name="com.ponkratov.beerapp.view.BeerInfoFragment"
+        tools:layout="@layout/fragment_beer_info">
+
+        <argument
+            android:defaultValue=""
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:defaultValue=""
+            android:name="tagline"
+            app:argType="string" />
+        <argument
+            android:defaultValue=""
+            android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:defaultValue=""
+            android:name="brewersTips"
+            app:argType="string" />
+    </fragment>
+</navigation>

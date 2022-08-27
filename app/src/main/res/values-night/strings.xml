@@ -1,8 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BeerApp</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="refresh">Refresh</string>
     <string name="beer_name">Name</string>
-    <string name="beer_tagline">Tagline</string>
     <string name="beer_brewers_tips">Brewers tips</string>
 </resources>
