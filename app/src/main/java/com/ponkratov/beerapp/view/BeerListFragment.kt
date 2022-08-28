@@ -116,7 +116,7 @@ class BeerListFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             val newBeers = adapter.currentList
-                                .dropLastWhile { it == PagingData.Loading }
+                                .filter { it != PagingData.Error && it != PagingData.Loading }
                                 .plus(response.body()?.map { PagingData.Item(it) }.orEmpty())
                                 .plus(PagingData.Loading)
                             adapter.submitList(newBeers)

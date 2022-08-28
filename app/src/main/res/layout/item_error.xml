@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:contentPadding="16dp">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,4 +20,4 @@
         android:layout_marginTop="36dp"
         android:text="@string/refresh" />
 
-</androidx.cardview.widget.CardView>
+</FrameLayout>

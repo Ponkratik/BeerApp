@@ -7,8 +7,9 @@ import android.widget.AbsListView
 import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ponkratov.beerapp.R
 
-fun RecyclerView.addVerticalSpace(@DimenRes spaceRes: Int) {
+fun RecyclerView.addVerticalSpace(@DimenRes spaceRes: Int = R.dimen.list_vertical_space) {
     val space = context.resources.getDimensionPixelSize(spaceRes)
     addItemDecoration(object : RecyclerView.ItemDecoration() {
         override fun getItemOffsets(

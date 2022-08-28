@@ -72,15 +72,6 @@ class BeerAdapter(
         private const val TYPE_ERROR = 2
 
         private val DIFF_UTIL = object : DiffUtil.ItemCallback<PagingData<Beer>>() {
-            /*override fun areItemsTheSame(oldItem: Beer, newItem: Beer): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Beer, newItem: Beer): Boolean {
-                return oldItem.imageUrl == newItem.imageUrl
-                        && oldItem.name == newItem.name
-            }*/
-
             override fun areItemsTheSame(
                 oldItem: PagingData<Beer>,
                 newItem: PagingData<Beer>
@@ -92,7 +83,9 @@ class BeerAdapter(
                 oldItem: PagingData<Beer>,
                 newItem: PagingData<Beer>
             ): Boolean {
-                return oldItem == newItem
+                val oldBeer = oldItem as? PagingData.Item
+                val newBeer = newItem as? PagingData.Item
+                return oldBeer == newBeer
             }
         }
     }
