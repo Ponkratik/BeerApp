@@ -15,7 +15,8 @@ import com.ponkratov.beerapp.model.PagingData
 
 class BeerAdapter(
     context: Context,
-    private val onBeerClicked: (Beer) -> Unit
+    private val onBeerClicked: (Beer) -> Unit,
+    private val onRefreshClicked: () -> Unit
 ) : ListAdapter<PagingData<Beer>, RecyclerView.ViewHolder>(DIFF_UTIL) {
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -40,12 +41,12 @@ class BeerAdapter(
                     binding = ItemLoadingBinding.inflate(layoutInflater, parent, false)
                 )
             }
-            /*TYPE_ERROR -> {
+            TYPE_ERROR -> {
                 ErrorViewHolder(
                     binding = ItemErrorBinding.inflate(layoutInflater, parent, false),
-                    onRefreshClicked = onActionButtonClicked
+                    onRefreshClicked = onRefreshClicked
                 )
-            }*/
+            }
             else -> error("Unsupported viewType $viewType")
         }
     }

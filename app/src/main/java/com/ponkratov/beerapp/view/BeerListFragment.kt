@@ -38,12 +38,17 @@ class BeerListFragment : Fragment() {
                         it.brewersTips
                     )
                 )
+            },
+            onRefreshClicked = {
+                restorePaging()
+                executeRequest {
+
+                }
             }
         )
     }
 
     private var currentPage = 1
-    private var currentBeers = mutableListOf<Beer>()
 
     private var currentRequest: Call<List<Beer>>? = null
 
@@ -73,9 +78,7 @@ class BeerListFragment : Fragment() {
             }
 
             layoutSwiperefresh.setOnRefreshListener {
-                currentPage = 1
-                currentRequest?.cancel()
-                currentRequest = null
+                restorePaging()
 
                 executeRequest {
                     layoutSwiperefresh.isRefreshing = false
@@ -91,6 +94,12 @@ class BeerListFragment : Fragment() {
             .show()
     }
 
+    private fun restorePaging() {
+        currentPage = 1
+        currentRequest?.cancel()
+        currentRequest = null
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -102,6 +111,13 @@ class BeerListFragment : Fragment() {
         val finishRequest = {
             onRequestFinished()
             currentRequest = null
+        }
+
+        val addErrorElement = {
+            val newBeers = adapter.currentList
+                .filter { it != PagingData.Error && it != PagingData.Loading }
+                .plus(PagingData.Error)
+            adapter.submitList(newBeers)
         }
 
         if (currentRequest != null) return
@@ -123,6 +139,7 @@ class BeerListFragment : Fragment() {
                             currentPage++
                         } else {
                             handleException(HttpException(response))
+                            addErrorElement()
                         }
 
                         finishRequest()
@@ -133,6 +150,7 @@ class BeerListFragment : Fragment() {
                             handleException(t)
                         }
 
+                        addErrorElement()
                         finishRequest()
                     }
 
