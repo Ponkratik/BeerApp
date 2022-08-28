@@ -16,8 +16,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/image"
@@ -31,42 +30,43 @@
             android:layout_height="2dp"
             android:background="#FF909090" />
 
-        <TableRow>
+        <TableRow android:layout_width="match_parent">
 
             <TextView
-                android:layout_column="1"
                 android:padding="3dp"
                 android:text="@string/beer_name" />
 
             <TextView
                 android:id="@+id/text_view_name"
+                android:layout_weight="5"
                 android:gravity="end"
                 android:padding="3dp" />
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_width="match_parent">
 
             <TextView
-                android:layout_column="1"
                 android:padding="3dp"
                 android:text="@string/beer_tagline" />
 
             <TextView
                 android:id="@+id/text_view_tagline"
+                android:layout_weight="5"
                 android:gravity="end"
                 android:padding="3dp" />
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_width="match_parent">
 
             <TextView
-                android:layout_column="1"
                 android:padding="3dp"
                 android:text="@string/beer_brewers_tips" />
 
             <TextView
                 android:id="@+id/text_view_brewers_tips"
+                android:layout_weight="5"
                 android:gravity="end"
+                android:maxLines="7"
                 android:padding="3dp" />
         </TableRow>
     </TableLayout>
